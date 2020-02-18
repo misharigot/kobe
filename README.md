@@ -1,5 +1,6 @@
 # kobe
-Code base for the AI Bachelor course Machine Learning at the Vrije Universiteit Amsterdam.
+Code base for the AI Bachelor course Machine Learning at the Vrije Universiteit Amsterdam. Predicting scoring shots using 20 years of data on Kobe Bryant's swishes and misses. See the [competition and data set on Kaggle](https://www.kaggle.com/c/kobe-bryant-shot-selection/overview).
+
 
 ## Installation with Poetry
 
