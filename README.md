@@ -23,5 +23,3 @@ poetry run ipython kernel install --user --name=kobe
 ## Manual package installation
 
 You can install the packages manually if you do not want to use Poetry. For a list of packages, see [pyproject.toml](pyproject.toml) under `[tool.poetry.dependencies]`.
-
-## Dit is een test
