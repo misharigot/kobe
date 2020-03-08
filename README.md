@@ -21,6 +21,6 @@ pipenv run jupyter-lab .
 
 ## Manual package installation
 
-You can install the packages manually if you do not want to use Poetry. For a list of packages, see [pyproject.toml](pyproject.toml) under `[tool.poetry.dependencies]`.
+You can install the packages manually if you do not want to use Pipenv. For a list of packages, see the packcages in [Pipfile](Pipfile).
 
 Just some random edits
