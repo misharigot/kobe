@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from typing import Optional
 from sklearn.model_selection import TimeSeriesSplit
 
 class MultipleTrainTestSplits:
@@ -15,8 +16,16 @@ class MultipleTrainTestSplits:
     """
     N_SPLITS = 3  # Number of splits
 
-    def __init__(self, csv_path: str):
-        self.data = pd.read_csv(csv_path)
+    def __init__(self, csv_path: Optional[str] = None,
+        df: Optional[pd.DataFrame] = None
+    ):
+        if csv_path is not None:
+            self.data = pd.read_csv(csv_path)
+        elif df is not None:
+            self.data = df
+        else:
+            raise ValueError('Either csv_path or df needs to have an argument.')
+            
         self._remove_unlabeled_rows()
 
         # Reset index, so we do not have gaps in the index because of the removed unlabeled rows
