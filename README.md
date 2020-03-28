@@ -24,3 +24,4 @@ pipenv run jupyter-lab .
 You can install the packages manually if you do not want to use Pipenv. For a list of packages, see the packcages in [Pipfile](Pipfile).
 
 Just some random edits
+
