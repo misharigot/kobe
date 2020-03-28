@@ -1,6 +1,9 @@
-import pandas as pd
+from datetime import datetime as dt
+
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import TimeSeriesSplit
+
 
 class MultipleTrainTestSplits:
     """Split the csv given in a train/validation/test set, using the approach
@@ -35,8 +38,9 @@ class MultipleTrainTestSplits:
     def _sort_chronologically(self):
         """Sort on game date and on game_event_id in order to sort chronologically.
         """
-        self.data['game_date'] = pd.to_datetime(self.data['game_date']) 
+        self.data['game_date'] = pd.to_datetime(self.data['game_date'])
         self.data = self.data.sort_values(by=['game_date', 'game_event_id'])
+        self.data['game_date'] = self.data['game_date'].dt.strftime('%Y-%m-%d')
 
     def _extract_test_set(self, split=0.8):
         """Returns a tuple with the train/validation and test set on a given split.
