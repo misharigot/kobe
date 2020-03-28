@@ -18,6 +18,7 @@ class MultipleTrainTestSplits:
     def __init__(self, csv_path: str):
         self.data = pd.read_csv(csv_path)
         self._remove_unlabeled_rows()
+        self._sort_chronologically()
 
         # Reset index, so we do not have gaps in the index because of the removed unlabeled rows
         self.data = self.data.reset_index(drop=True)
@@ -30,6 +31,12 @@ class MultipleTrainTestSplits:
     def _remove_unlabeled_rows(self):
         # Only obtain the labeled rows
         self.data = self.data.loc[~self.data['shot_made_flag'].isnull()].copy()
+        
+    def _sort_chronologically(self):
+        """Sort on game date and on game_event_id in order to sort chronologically.
+        """
+        self.data['game_date'] = pd.to_datetime(self.data['game_date']) 
+        self.data = self.data.sort_values(by=['game_date', 'game_event_id'])
 
     def _extract_test_set(self, split=0.8):
         """Returns a tuple with the train/validation and test set on a given split.
