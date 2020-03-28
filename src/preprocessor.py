@@ -86,6 +86,10 @@ class Preprocessor:
         return df
 
     def _add_months_elapsed(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Adds a column months_elapsed_from_first game that indicates the 
+        number of months that have elapsed from the first game that was found
+        in the data set from 1996.
+        """
         df = data.copy()
         first_recorded_game = min(self.raw_data['game_date'])
 
@@ -108,6 +112,9 @@ class Preprocessor:
 
 
     def _add_home_away_(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Adds two columns that indicate whether the game was a home game
+        or an away game.
+        """
         df = data.copy()
         df['away'] = 0
         df['home'] = 0
