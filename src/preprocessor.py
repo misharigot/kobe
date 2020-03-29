@@ -9,9 +9,9 @@ class Preprocessor:
     """Preprocesses the data set.
 
     Example: 
-    data = pd.read_csv('data/data.csv')
-    pp = Preprocessor('data/data.csv')
-    df = pp.preprocess(data)
+        data = pd.read_csv('data/data.csv')
+        pp = Preprocessor('data/data.csv')
+        df = pp.preprocess(data)
     """
     # Categorize all columns based on their data type
     categorical_columns = [
