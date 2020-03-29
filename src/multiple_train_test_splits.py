@@ -29,7 +29,7 @@ class MultipleTrainTestSplits:
         train_validation_set, test_set = self._extract_test_set()
 
         self.test_set = test_set
-        self._train_validation_set = train_validation_set
+        self.train_validation_set = train_validation_set
 
     def _remove_unlabeled_rows(self):
         # Only obtain the labeled rows
@@ -78,7 +78,7 @@ class MultipleTrainTestSplits:
         """
         splits = TimeSeriesSplit(n_splits=self.N_SPLITS)
    
-        train_val_set = self._train_validation_set.to_numpy()
+        train_val_set = self.train_validation_set.to_numpy()
 
         for train_index, validation_index in splits.split(train_val_set):
             train = train_val_set[train_index]
