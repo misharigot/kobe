@@ -9,9 +9,9 @@ class Preprocessor:
     """Preprocesses the data set.
 
     Example: 
-    data = pd.read_csv('data/data.csv')
-    pp = Preprocessor('data/data.csv')
-    df = pp.preprocess(data)
+        data = pd.read_csv('data/data.csv')
+        pp = Preprocessor('data/data.csv')
+        df = pp.preprocess(data)
     """
     # Categorize all columns based on their data type
     categorical_columns = [
@@ -137,6 +137,10 @@ class Preprocessor:
             self.encoder.transform(df_with_only_categoricals).toarray()
         )
 
+        # Reset indices, because they were reset during above line
+        one_hot_encoded_df.reset_index(inplace=True, drop=True)
+        df_without_categoricals.reset_index(inplace=True, drop=True)
+
         # Combine the one hot encoded part of the df with the remaining df
         resulting_df = pd.concat(
             [one_hot_encoded_df, df_without_categoricals],
@@ -154,9 +158,9 @@ class Preprocessor:
             pd.DataFrame: Preprocessed data.
         """
         df = data.copy()
-        df = self._add_time_remaining(df)
-        df = self._add_months_elapsed(df)
-        df = self._add_home_away_(df)
+        # df = self._add_time_remaining(df)
+        # df = self._add_months_elapsed(df)
+        # df = self._add_home_away_(df)
         df = self._one_hot_encode(df)
         df = df.drop(Preprocessor.excluded_columns
             + Preprocessor.excluded_but_feature_engineered_columns
