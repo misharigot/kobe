@@ -16,6 +16,7 @@ keras = "*"
 tensorflow = "*"
 jupyter = "*"
 mypy = "*"
+ipykernel = "*"
 
 [requires]
 python_version = "3.7"
